@@ -1,10 +1,14 @@
+// vue-routerの記述がここに書かれている
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 
 const routes = [
   {
+    // リクエストのパス
     path: '/',
+    // ルーティングの名前
     name: 'Home',
+    // このルーティングで呼び出されるコンポーネント名
     component: Home
   },
   {
@@ -16,10 +20,19 @@ const routes = [
     component: function () {
       return import(/* webpackChunkName: "about" */ '../views/About.vue')
     }
+  },
+  {
+    path: '/article',
+    name: "article",
+    component: function () {
+      return import(/* webpackChunkName: "about" */ '../views/Article.vue')
+    }
   }
 ]
 
+// ルーティング情報を扱うルーターの生成
 const router = createRouter({
+  //historyモードの設定
   history: createWebHistory(process.env.BASE_URL),
   routes
 })
